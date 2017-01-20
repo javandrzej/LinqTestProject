@@ -8,9 +8,17 @@ namespace LinqProject
         public IEnumerable<Person> SortByAge(List<Person> personLists)
         {
             return
-            from p in personLists
-            orderby p.Age
-            select p;
+                from p in personLists
+                orderby p.Age
+                select p;
+        }
+
+        public IEnumerable<Person> TakeYoungPerson(List<Person> personLists, int minEge, int maxAge)
+        {
+            return
+                from p in personLists
+                where p.Age >= minEge && p.Age <= maxAge
+                select p;
         }
     }
 }
