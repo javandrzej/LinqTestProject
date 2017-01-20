@@ -50,9 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="MethodSyntaxRepositoryTests.cs" />
-    <Compile Include="PersonRepositoryTests.cs" />
-    <Compile Include="QuerySyntaxRepositoryTests.cs" />
+    <Compile Include="RepositoryTests.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
