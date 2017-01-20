@@ -1,9 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LinqProjectTests
+﻿namespace LinqProjectTests
 {
-    [TestClass]
-    class PersonRepositoryTests
+
+    public class PersonRepositoryTests
     {
+
     }
 }

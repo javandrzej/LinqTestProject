@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LinqProject
 {
-    class QuerySyntaxRepository
+    public class QuerySyntaxRepository : IRepository
     {
+        public IEnumerable<Person> SortByAge(List<Person> personLists)
+        {
+            return
+            from p in personLists
+            orderby p.Age
+            select p;
+        }
     }
 }
