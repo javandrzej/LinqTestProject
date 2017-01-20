@@ -53,8 +53,14 @@
     <Compile Include="MethodSyntaxRepositoryTests.cs" />
     <Compile Include="PersonRepositoryTests.cs" />
     <Compile Include="QuerySyntaxRepositoryTests.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Generator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LinqProject\LinqProject.csproj">
+      <Project>{e2d5c71e-eeca-42a1-983d-34d2deca4a8d}</Project>
+      <Name>LinqProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
