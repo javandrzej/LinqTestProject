@@ -25,5 +25,10 @@ namespace LinqProject
             EmailAddress = emailAddress;
             BirthDate = birthdate;
         }
+
+        public override string ToString()
+        {
+            return Id + " " + FirstName + " " + LastName + " " + Age + " " + EmailAddress + " " + BirthDate;
+        }
     }
 }

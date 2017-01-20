@@ -47,6 +47,7 @@
     <Compile Include="Repository\QuerySyntaxRepository.cs" />
     <Compile Include="Utils\DataGenerator.cs" />
     <Compile Include="Utils\IGenarator.cs" />
+    <Compile Include="Utils\StringOperators.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
