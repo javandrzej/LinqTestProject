@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,13 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\PersonContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\Linq\IRepository.cs" />
     <Compile Include="Repository\Linq\MethodSyntaxRepositories.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Linq\QuerySyntaxRepository.cs" />
-    <Compile Include="Repository\Person\IPersonRepository.cs" />
-    <Compile Include="Repository\Person\PersonRepisotory.cs" />
+    <Compile Include="Repository\Persons\IPersonRepository.cs" />
+    <Compile Include="Repository\Persons\PersonDbRepsitory.cs" />
     <Compile Include="Utils\DataGenerator.cs" />
     <Compile Include="Utils\IGenarator.cs" />
     <Compile Include="Utils\StringOperators.cs" />
