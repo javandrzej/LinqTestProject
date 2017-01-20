@@ -55,8 +55,8 @@ namespace LinqProjectTests
             IGenarator generator = new DataGenerator();
             int personCount = 15;
             var persons = generator.CreatePersonsWithRandomStrings(personCount);
-            int minAge = 20;
-            int maxAge = 30;
+            int minAge = 1;
+            int maxAge = 100;
             foreach (var repo in repositories)
             {
                 //when

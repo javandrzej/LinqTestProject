@@ -7,6 +7,10 @@ namespace LinqProject.Utils
     public class DataGenerator : IGenarator
     {
         private static Random rand = new Random();
+        public enum Letters
+        {
+            small, big, mix
+        }
         public IEnumerable<Person> CreatePersons(int count)
         {
             return Enumerable.Range(1, count).Select(p => new Person(Guid.NewGuid(), "firstname" + p, "lastname" + p, 20 + p, "myemail" + p + p, DateTime.Now.Add(new TimeSpan(p, 0, 0, 0))));
@@ -14,8 +18,10 @@ namespace LinqProject.Utils
 
         public IEnumerable<Person> CreatePersonsWithRandomStrings(int count)
         {
+            DateTime firstDate = new DateTime(2015, 1, 1);
+            DateTime secondDate = new DateTime(2016, 12, 30);
             return Enumerable.Range(1, count)
-                .Select(p => new Person(Guid.NewGuid(), GenerateRandomString(10, Letters.mix), GenerateRandomString(15, Letters.mix), 20 + p, "myemail@wp.pl", DateTime.Now.Add(new TimeSpan(p, 0, 0, 0))));
+                .Select(p => new Person(Guid.NewGuid(), GenerateRandomString(10, Letters.mix), GenerateRandomString(15, Letters.mix), GenerateRandomAge(), GenerateRandomEmail(), GenerateRandomDate(firstDate, secondDate)));
         }
 
         public string GenerateRandomString(int count, Letters letter)
@@ -43,10 +49,20 @@ namespace LinqProject.Utils
             return rand.Next(min, max);
         }
 
-        public enum Letters
+        public int GenerateRandomAge()
         {
-            small, big, mix
+            return rand.Next(1, 100);
         }
 
+        public string GenerateRandomEmail()
+        {
+            return GenerateRandomString(10, Letters.small) + "@" + GenerateRandomString(2, Letters.small) + "." + GenerateRandomString(2, Letters.small);
+        }
+
+        public DateTime GenerateRandomDate(DateTime firstDate, DateTime secondDate)
+        {
+            int range = (secondDate - firstDate).Days;
+            return firstDate.AddDays(rand.Next(range));
+        }
     }
 }

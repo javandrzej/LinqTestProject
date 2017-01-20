@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using static LinqProject.Utils.DataGenerator;
 
 namespace LinqProject.Utils
@@ -10,6 +11,9 @@ namespace LinqProject.Utils
         string GenerateRandomString(int count, Letters letter);
         int GenerateRandomNumber(int min, int max);
         string GenereteString(int count, char newChar, bool mix = false);
+        int GenerateRandomAge();
+        string GenerateRandomEmail();
+        DateTime GenerateRandomDate(DateTime firstDate, DateTime secondDate);
 
     }
 }

@@ -41,7 +41,6 @@ namespace LinqProjectTests
             int personNumber = 10;
             //when
             var persons = generator.CreatePersonsWithRandomStrings(personNumber);
-            persons.ToList().ForEach(Console.WriteLine);
             //then
             Assert.AreEqual(personNumber, persons.Count());
         }
@@ -53,7 +52,6 @@ namespace LinqProjectTests
             IGenarator generator = new DataGenerator();
             //when
             int value = generator.GenerateRandomNumber(1, 100);
-            TestContext.WriteLine(value.ToString());
             //then
             Assert.IsTrue(value > 0 && value < 100);
         }
@@ -66,7 +64,6 @@ namespace LinqProjectTests
             int stringSize = 10;
             //when
             string value = generator.GenerateRandomString(stringSize, DataGenerator.Letters.mix);
-            TestContext.WriteLine(value);
             //then
             Assert.AreEqual(stringSize, value.Length);
         }
@@ -80,7 +77,7 @@ namespace LinqProjectTests
             //when
             string value = generator.GenerateRandomString(stringSize, DataGenerator.Letters.big);
             //then
-            Assert.AreEqual(true, StringOperators.isUpperString(value));
+            Assert.AreEqual(true, StringOperators.IsUpperString(value));
         }
 
         [TestMethod]
@@ -92,8 +89,42 @@ namespace LinqProjectTests
             //when
             string value = generator.GenerateRandomString(stringSize, DataGenerator.Letters.small);
             //then
-            Assert.AreEqual(true, StringOperators.isLowerString(value));
+            Assert.AreEqual(true, StringOperators.IsLowerString(value));
         }
 
+        [TestMethod]
+        public void ShouldGenerateRandomAge()
+        {
+            //given
+            IGenarator generator = new DataGenerator();
+            //when
+            int value = generator.GenerateRandomAge();
+            //then
+            Assert.IsTrue(value >= 1 && value <= 100);
+        }
+
+        [TestMethod]
+        public void ShouldGenerateRandomEmail()
+        {
+            //given
+            IGenarator generator = new DataGenerator();
+            //when
+            string value = generator.GenerateRandomEmail();
+            //then
+            Assert.IsTrue(StringOperators.IsValidEmailAddress(value));
+        }
+
+        [TestMethod]
+        public void ShouldGenerateRandomDate()
+        {
+            //given
+            IGenarator generator = new DataGenerator();
+            DateTime firstDate = new DateTime(2015, 1, 1);
+            DateTime secondDate = new DateTime(2016, 12, 30);
+            //when
+            DateTime value = generator.GenerateRandomDate(firstDate, secondDate);
+            //then
+            Assert.IsTrue(value > firstDate && value < secondDate);
+        }
     }
 }

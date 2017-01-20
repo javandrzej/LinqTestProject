@@ -12,7 +12,7 @@ namespace LinqProjectTests
             //given
             string message = "AJFKSDFFGSA";
             //when
-            bool isUpper = StringOperators.isUpperString(message);
+            bool isUpper = StringOperators.IsUpperString(message);
             //when
             Assert.AreEqual(true, isUpper);
         }
@@ -23,7 +23,7 @@ namespace LinqProjectTests
             //given
             string message = "asdasdasdbasd";
             //when
-            bool isLower = StringOperators.isLowerString(message);
+            bool isLower = StringOperators.IsLowerString(message);
             //when
             Assert.AreEqual(true, isLower);
         }
