@@ -1,0 +1,7 @@
+﻿namespace LinqProject
+{
+    interface IRepository
+    {
+
+    }
+}
