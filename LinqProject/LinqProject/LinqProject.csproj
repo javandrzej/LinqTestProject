@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,12 @@
     <Compile Include="Repository\Persons\IPersonRepository.cs" />
     <Compile Include="Repository\Persons\PersonDbRepsitory.cs" />
     <Compile Include="Utils\DataGenerator.cs" />
+    <Compile Include="Utils\FileOperators\CsvOperator.cs" />
+    <Compile Include="Utils\FileOperators\IFileOpenOperator.cs" />
+    <Compile Include="Utils\FileOperators\IFileOperator.cs" />
+    <Compile Include="Utils\FileOperators\PdfOperator.cs" />
+    <Compile Include="Utils\FileOperators\TxtOperator.cs" />
+    <Compile Include="Utils\FileOperators\XmlOperator.cs" />
     <Compile Include="Utils\IGenarator.cs" />
     <Compile Include="Utils\StringOperators.cs" />
   </ItemGroup>

@@ -36,6 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.ClockLabel = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewPersons)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,10 +72,11 @@
             // 
             this.button3.Location = new System.Drawing.Point(807, 101);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 35);
+            this.button3.Size = new System.Drawing.Size(147, 35);
             this.button3.TabIndex = 4;
             this.button3.Text = "Save to txt";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 
@@ -88,18 +90,18 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(807, 148);
+            this.button2.Location = new System.Drawing.Point(807, 142);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 37);
+            this.button2.Size = new System.Drawing.Size(147, 37);
             this.button2.TabIndex = 6;
             this.button2.Text = "Save to csv";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(808, 193);
+            this.button4.Location = new System.Drawing.Point(807, 185);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 37);
+            this.button4.Size = new System.Drawing.Size(147, 37);
             this.button4.TabIndex = 7;
             this.button4.Text = "Save to pdf";
             this.button4.UseVisualStyleBackColor = true;
@@ -108,17 +110,27 @@
             // 
             this.ClockLabel.AutoSize = true;
             this.ClockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ClockLabel.Location = new System.Drawing.Point(19, 12);
+            this.ClockLabel.Location = new System.Drawing.Point(21, 20);
             this.ClockLabel.Name = "ClockLabel";
             this.ClockLabel.Size = new System.Drawing.Size(130, 25);
             this.ClockLabel.TabIndex = 8;
             this.ClockLabel.Text = "Future clock";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(807, 228);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(147, 39);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Save to xml";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // PersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 488);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.ClockLabel);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
@@ -129,6 +141,7 @@
             this.Controls.Add(this.button1);
             this.Name = "PersonForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.PersonForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewPersons)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,6 +158,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label ClockLabel;
+        private System.Windows.Forms.Button button5;
     }
 }
 

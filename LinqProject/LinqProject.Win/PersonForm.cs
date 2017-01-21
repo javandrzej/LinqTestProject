@@ -1,5 +1,7 @@
 ﻿using LinqProject.Repository.Persons;
+using LinqProject.Utils.FileOperators;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace LinqProject.Win
@@ -8,6 +10,7 @@ namespace LinqProject.Win
     {
         private IPersonRepository repository = new PersonDbRepsitory();
         private Timer t = null;
+        IFileOperator fileOperator = null;
         private void StartTimer()
         {
             t = new Timer();
@@ -53,7 +56,15 @@ namespace LinqProject.Win
 
         }
 
+        private void PersonForm_Load(object sender, EventArgs e)
+        {
 
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            fileOperator = new TxtOperator();
+            fileOperator.Save((List<Person>)DataGridViewPersons.DataSource);
+        }
     }
 }

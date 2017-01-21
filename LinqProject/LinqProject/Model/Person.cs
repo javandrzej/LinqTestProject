@@ -11,6 +11,7 @@ namespace LinqProject
         public string EmailAddress { get; set; }
         public DateTime BirthDate { get; set; }
 
+        private static readonly string delimeter = "    ";
         public Person()
         {
 
@@ -26,9 +27,10 @@ namespace LinqProject
             BirthDate = birthdate;
         }
 
+
         public override string ToString()
         {
-            return Id + " " + FirstName + " " + LastName + " " + Age + " " + EmailAddress + " " + BirthDate;
+            return Id + delimeter + FirstName + delimeter + LastName + delimeter + Age + delimeter + EmailAddress + delimeter + BirthDate;
         }
     }
 }
