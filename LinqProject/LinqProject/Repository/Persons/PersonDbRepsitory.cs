@@ -2,6 +2,7 @@
 using LinqProject.Utils;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace LinqProject.Repository.Persons
 {
     public class PersonDbRepsitory : IPersonRepository
@@ -14,6 +15,12 @@ namespace LinqProject.Repository.Persons
             personContext.SaveChanges();
         }
 
+        public void InitDataWithParameters(int count)
+        {
+            personContext.Persons.AddRange(generator.CreatePersonsWithRandomStrings(count));
+            personContext.SaveChanges();
+        }
+
         public void AddPerson(Person p)
         {
             personContext.Persons.Add(p);
@@ -22,11 +29,18 @@ namespace LinqProject.Repository.Persons
         public void Delete(Person p)
         {
             personContext.Persons.Remove(p);
+            personContext.SaveChanges();
         }
 
         public List<Person> GetPersons()
         {
             return personContext.Persons.ToList();
+        }
+
+        public void Clear()
+        {
+            personContext.Persons.RemoveRange(personContext.Persons);
+            personContext.SaveChanges();
         }
     }
 }

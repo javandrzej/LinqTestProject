@@ -1,5 +1,6 @@
 ﻿using LinqProject.Repository.Persons;
 using LinqProject.Utils.FileOperators;
+using LinqProject.Win.FactoryPattern;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace LinqProject.Win
 {
     public partial class PersonForm : Form
     {
-        private IPersonRepository repository = new PersonDbRepsitory();
+        private DataAlgorithm<Person> repositoryAlgorithm;
         private Timer t = null;
         IFileOperator fileOperator = null;
         private void StartTimer()
@@ -26,10 +27,11 @@ namespace LinqProject.Win
         public PersonForm()
         {
             InitializeComponent();
+            repositoryAlgorithm = new PersonAlgorithm(new PersonDbRepsitory());
             StartTimer();
             try
             {
-                repository.InitData();
+                repositoryAlgorithm.Repository.InitData();
             }
             catch (Exception p)
             {
@@ -43,7 +45,7 @@ namespace LinqProject.Win
         {
             try
             {
-                DataGridViewPersons.DataSource = repository.GetPersons();
+                DataGridViewPersons.DataSource = repositoryAlgorithm.GetFromDatabase();
             }
             catch (Exception p)
             {
@@ -65,6 +67,51 @@ namespace LinqProject.Win
         {
             fileOperator = new TxtOperator();
             fileOperator.Save((List<Person>)DataGridViewPersons.DataSource);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            fileOperator = new PdfOperator();
+            fileOperator.Save((List<Person>)DataGridViewPersons.DataSource);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClockLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            repositoryAlgorithm.ClearDatebase();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            repositoryAlgorithm.GenerateData(RowCount());
+        }
+
+        private int RowCount()
+        {
+            int defaultCount = 10;
+            int.TryParse(textBoxRowNumbers.Text, out defaultCount);
+            return defaultCount;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewPersons.DataSource = repositoryAlgorithm.Run(RowCount());
+            }
+            catch (Exception p)
+            {
+                MessageBox.Show("Problem with get data from DB");
+            }
         }
     }
 }

@@ -13,9 +13,7 @@ namespace LinqProject.Utils.FileOperators
 
         public bool Save(IEnumerable list)
         {
-            SaveFileDialog savefile = new SaveFileDialog();
-            savefile.FileName = "ListOfPersons.txt";
-            savefile.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            SaveFileDialog savefile = SetSaveOptions();
             if (savefile.ShowDialog() == DialogResult.OK)
             {
                 using (StreamWriter sw = new StreamWriter(savefile.FileName))
@@ -27,6 +25,14 @@ namespace LinqProject.Utils.FileOperators
                 }
             }
             return true;
+        }
+
+        protected static SaveFileDialog SetSaveOptions()
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.FileName = "ListOfPersons.txt";
+            savefile.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            return savefile;
         }
     }
 }

@@ -8,5 +8,7 @@ namespace LinqProject.Repository.Persons
         void AddPerson(Person p);
         void Delete(Person p);
         List<Person> GetPersons();
+        void Clear();
+        void InitDataWithParameters(int count);
     }
 }
