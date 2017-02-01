@@ -28,5 +28,12 @@ namespace LinqProject.Utils
                 return false;
             }
         }
+
+        public static string GetCreatedFileStaus(bool success, string fileExtension)
+        {
+            return success ?
+                  "File with extension " + fileExtension.ToLower() + " was successful created at time " + DateTime.Now
+             : "File with extension " + fileExtension.ToLower() + " was not created at time " + DateTime.Now;
+        }
     }
 }

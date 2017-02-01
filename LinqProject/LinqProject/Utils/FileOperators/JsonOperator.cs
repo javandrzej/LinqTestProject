@@ -1,6 +1,13 @@
-﻿namespace LinqProject.Utils.FileOperators
+﻿using System;
+using System.Collections;
+
+namespace LinqProject.Utils.FileOperators
 {
-    public class JsonOperator
+    public class JsonOperator : IFileOperator
     {
+        public override bool Save(IEnumerable list)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

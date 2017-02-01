@@ -1,7 +1,7 @@
 ﻿namespace LinqProject.Utils.FileOperators
 {
-    public interface IFileOpenOperator
+    public enum FileTypes
     {
-        bool Read();
+        PDF, JSON, CSV, TXT, XML
     }
 }

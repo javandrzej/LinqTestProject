@@ -4,15 +4,22 @@ using System.Windows.Forms;
 
 namespace LinqProject.Utils.FileOperators
 {
-    public class TxtOperator : IFileOpenOperator
+    public class TxtOperator : IFileOperator, IFileOpenOperator
     {
+
+        public TxtOperator()
+        {
+            FileType = FileTypes.TXT.ToString();
+        }
+
         public bool Read()
         {
             return true;
         }
 
-        public bool Save(IEnumerable list)
+        public override bool Save(IEnumerable list)
         {
+            if (list == null) return false;
             SaveFileDialog savefile = SetSaveOptions();
             if (savefile.ShowDialog() == DialogResult.OK)
             {
@@ -23,8 +30,9 @@ namespace LinqProject.Utils.FileOperators
                         sw.WriteLine(element.ToString());
                     }
                 }
+                return true;
             }
-            return true;
+            return false;
         }
 
         protected static SaveFileDialog SetSaveOptions()

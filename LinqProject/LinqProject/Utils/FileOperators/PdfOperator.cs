@@ -8,8 +8,14 @@ namespace LinqProject.Utils.FileOperators
 {
     public class PdfOperator : IFileOperator
     {
-        public bool Save(IEnumerable list)
+        public PdfOperator()
         {
+            FileType = FileTypes.PDF.ToString();
+        }
+
+        public override bool Save(IEnumerable list)
+        {
+            if (list == null) return false;
             SaveFileDialog savefile = SetSaveOptions();
             if (savefile.ShowDialog() == DialogResult.OK)
             {
@@ -23,8 +29,13 @@ namespace LinqProject.Utils.FileOperators
                 }
 
                 doc.Close();
+                return true;
             }
-            return true;
+            else
+            {
+                return false;
+            }
+
         }
 
         protected static SaveFileDialog SetSaveOptions()

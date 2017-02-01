@@ -2,8 +2,9 @@
 
 namespace LinqProject.Utils.FileOperators
 {
-    public interface IFileOperator
+    public abstract class IFileOperator
     {
-        bool Save(IEnumerable list);
+        public string FileType { get; set; }
+        public abstract bool Save(IEnumerable list);
     }
 }

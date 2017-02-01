@@ -2,15 +2,19 @@
 
 namespace LinqProject.Utils.FileOperators
 {
-    public class XmlOperator : IFileOpenOperator
+    public class XmlOperator : IFileOperator, IFileOpenOperator
     {
+        public XmlOperator()
+        {
+            FileType = FileTypes.XML.ToString();
+        }
+
         public bool Read()
         {
             return true;
         }
 
-
-        public bool Save(IEnumerable list)
+        public override bool Save(IEnumerable list)
         {
             return true;
         }

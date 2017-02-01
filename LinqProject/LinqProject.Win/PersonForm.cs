@@ -1,8 +1,10 @@
 ﻿using LinqProject.Repository.Persons;
+using LinqProject.Utils;
 using LinqProject.Utils.FileOperators;
 using LinqProject.Win.FactoryPattern;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace LinqProject.Win
@@ -11,19 +13,25 @@ namespace LinqProject.Win
     {
         private DataAlgorithm<Person> repositoryAlgorithm;
         private Timer t = null;
-        IFileOperator fileOperator = null;
+        private BindingList<string> fileOperationStatus = new BindingList<string>();
+        private IFileOperator fileOperator = null;
         private void StartTimer()
         {
             t = new Timer();
             t.Interval = 1000;
-            t.Tick += new EventHandler(ChangeTime);
+            t.Tick += new EventHandler(ChangeTimeEvent);
             t.Enabled = true;
         }
 
-        private void ChangeTime(object sender, EventArgs e)
+        private void ChangeTimeEvent(object sender, EventArgs e)
         {
             ClockLabel.Text = DateTime.Now.ToString();
         }
+
+        private void UpdateCreatedFileEvent()
+        {
+        }
+
         public PersonForm()
         {
             InitializeComponent();
@@ -37,11 +45,10 @@ namespace LinqProject.Win
             {
                 MessageBox.Show("Problem with init data in DB");
             }
-
-
+            FileOperationList.DataSource = fileOperationStatus;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ClickEventForGetDataFromDb(object sender, EventArgs e)
         {
             try
             {
@@ -63,16 +70,17 @@ namespace LinqProject.Win
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ClickEventForSaveTxt(object sender, EventArgs e)
         {
             fileOperator = new TxtOperator();
-            fileOperator.Save((List<Person>)DataGridViewPersons.DataSource);
+            fileOperationStatus.Add(StringOperators.GetCreatedFileStaus(fileOperator.Save((List<Person>)DataGridViewPersons.DataSource), fileOperator.FileType.ToString()));
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void ClickEventForSavePdf(object sender, EventArgs e)
         {
             fileOperator = new PdfOperator();
-            fileOperator.Save((List<Person>)DataGridViewPersons.DataSource);
+            fileOperationStatus.Add(StringOperators.GetCreatedFileStaus(fileOperator.Save((List<Person>)DataGridViewPersons.DataSource), fileOperator.FileType.ToString()));
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -85,12 +93,12 @@ namespace LinqProject.Win
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void ClickEventClearDb(object sender, EventArgs e)
         {
             repositoryAlgorithm.ClearDatebase();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void ClickEventGenerateData(object sender, EventArgs e)
         {
             repositoryAlgorithm.GenerateData(RowCount());
         }
@@ -102,7 +110,7 @@ namespace LinqProject.Win
             return defaultCount;
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void ClickEventForAlorithm(object sender, EventArgs e)
         {
             try
             {
@@ -110,8 +118,19 @@ namespace LinqProject.Win
             }
             catch (Exception p)
             {
-                MessageBox.Show("Problem with get data from DB");
+                MessageBox.Show("Problem with getting data from DB");
             }
+        }
+
+        private void ClickEventForSaveCsv(object sender, EventArgs e)
+        {
+            fileOperator = new CsvOperator();
+            fileOperationStatus.Add(StringOperators.GetCreatedFileStaus(fileOperator.Save((List<Person>)DataGridViewPersons.DataSource), fileOperator.FileType.ToString()));
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
