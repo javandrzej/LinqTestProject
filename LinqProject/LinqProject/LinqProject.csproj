@@ -42,6 +42,10 @@
       <HintPath>..\packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -76,6 +80,10 @@
     <Compile Include="Utils\FileOperators\XmlOperator.cs" />
     <Compile Include="Utils\IGenarator.cs" />
     <Compile Include="Utils\ModelWrapper\PersonWrapper.cs" />
+    <Compile Include="Utils\TimeOperations\IStatistics.cs" />
+    <Compile Include="Utils\TimeOperations\StatisticsOperations.cs" />
+    <Compile Include="Utils\TimeOperations\StopwatchStatistics.cs" />
+    <Compile Include="Utils\TimeOperations\StopwatchUtil.cs" />
     <Compile Include="Utils\StringOperators.cs" />
   </ItemGroup>
   <ItemGroup />

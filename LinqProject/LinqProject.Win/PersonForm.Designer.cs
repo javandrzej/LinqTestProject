@@ -47,9 +47,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button8 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button9 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.FileOperationList = new System.Windows.Forms.ListBox();
             this.personFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.View.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewPersons)).BeginInit();
@@ -137,6 +139,7 @@
             this.button5.TabIndex = 9;
             this.button5.Text = "Save to xml";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.ClickEventForSaveXml);
             // 
             // textBoxRowNumbers
             // 
@@ -182,6 +185,7 @@
             this.View.Controls.Add(this.tabPage1);
             this.View.Controls.Add(this.tabPage2);
             this.View.Controls.Add(this.tabPage3);
+            this.View.Controls.Add(this.tabPage4);
             this.View.Location = new System.Drawing.Point(0, -2);
             this.View.Name = "View";
             this.View.SelectedIndex = 0;
@@ -238,6 +242,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button9);
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.FileOperationList);
             this.tabPage3.Controls.Add(this.button2);
@@ -251,6 +256,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Export";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(84, 319);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(150, 35);
+            this.button9.TabIndex = 12;
+            this.button9.Text = "Save to json";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.ClickEventForSaveJson);
             // 
             // label4
             // 
@@ -275,6 +290,15 @@
             // personFormBindingSource
             // 
             this.personFormBindingSource.DataSource = typeof(LinqProject.Win.PersonForm);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(982, 467);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Network";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // PersonForm
             // 
@@ -321,6 +345,8 @@
         private System.Windows.Forms.ListBox FileOperationList;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource personFormBindingSource;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }
 

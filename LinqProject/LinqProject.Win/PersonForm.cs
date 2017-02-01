@@ -28,10 +28,6 @@ namespace LinqProject.Win
             ClockLabel.Text = DateTime.Now.ToString();
         }
 
-        private void UpdateCreatedFileEvent()
-        {
-        }
-
         public PersonForm()
         {
             InitializeComponent();
@@ -73,14 +69,13 @@ namespace LinqProject.Win
         private void ClickEventForSaveTxt(object sender, EventArgs e)
         {
             fileOperator = new TxtOperator();
-            fileOperationStatus.Add(StringOperators.GetCreatedFileStaus(fileOperator.Save((List<Person>)DataGridViewPersons.DataSource), fileOperator.FileType.ToString()));
+            AddSavedElementToStatusList();
         }
 
         private void ClickEventForSavePdf(object sender, EventArgs e)
         {
             fileOperator = new PdfOperator();
-            fileOperationStatus.Add(StringOperators.GetCreatedFileStaus(fileOperator.Save((List<Person>)DataGridViewPersons.DataSource), fileOperator.FileType.ToString()));
-
+            AddSavedElementToStatusList();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -125,12 +120,29 @@ namespace LinqProject.Win
         private void ClickEventForSaveCsv(object sender, EventArgs e)
         {
             fileOperator = new CsvOperator();
-            fileOperationStatus.Add(StringOperators.GetCreatedFileStaus(fileOperator.Save((List<Person>)DataGridViewPersons.DataSource), fileOperator.FileType.ToString()));
+            AddSavedElementToStatusList();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ClickEventForSaveJson(object sender, EventArgs e)
+        {
+            fileOperator = new JsonOperator();
+            AddSavedElementToStatusList();
+        }
+
+        private void ClickEventForSaveXml(object sender, EventArgs e)
+        {
+            fileOperator = new XmlOperator();
+            AddSavedElementToStatusList();
+        }
+
+        private void AddSavedElementToStatusList()
+        {
+            fileOperationStatus.Add(StringOperators.GetCreatedFileStaus(fileOperator.Save((List<Person>)DataGridViewPersons.DataSource), fileOperator.FileType.ToString()));
         }
     }
 }
